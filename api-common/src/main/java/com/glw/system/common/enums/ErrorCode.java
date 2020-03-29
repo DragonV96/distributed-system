@@ -12,7 +12,8 @@ import lombok.Getter;
 public enum ErrorCode {
 
     SUCCESS(200, "执行成功"),
-    INSERT_ERROR(1001, "插入数据库失败");
+    INSERT_ERROR(1001, "插入数据库失败"),
+    QUERY_NO_RECORD(2001, "数据库没有此条记录");
 
     /** 错误码 */
     private int code;

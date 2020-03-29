@@ -41,6 +41,6 @@ public class PaymentController {
             return ApiResponse.success(payment);
         }
         log.error(" >>>>> There is no record about this payment! Payment id = {}", id);
-        return ApiResponse.error(ErrorCode.INSERT_ERROR);
+        return ApiResponse.error(ErrorCode.QUERY_NO_RECORD);
     }
 }
