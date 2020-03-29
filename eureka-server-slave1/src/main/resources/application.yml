@@ -3,13 +3,13 @@ spring:
     name: eureka-server
 
 server:
-  port: 7001
+  port: 7002
 
 eureka:
   instance:
-    hostname: server1
+    hostname: server2
   client:
     fetch-registry: false            # 是否同步其他节点数据
     register-with-eureka: false     # 无需将自己注册到eureka服务
     service-url:
-      defaultZone: http://server2:7002/eureka/
+      defaultZone: http://server1:7001/eureka/
