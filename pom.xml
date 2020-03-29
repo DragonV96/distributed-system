@@ -11,6 +11,7 @@
 
   <modules>
     <module>provider-payment</module>
+    <module>consumer-order</module>
   </modules>
 
   <properties>
