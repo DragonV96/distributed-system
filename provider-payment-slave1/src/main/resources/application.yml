@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
   profiles:
@@ -12,7 +12,7 @@ eureka:
     service-url:
       defaultZone: http://server1:7001/eureka,http://server2:7002/eureka
   instance:
-    instance-id: payment1
+    instance-id: payment2
     prefer-ip-address: true
 
 mybatis:

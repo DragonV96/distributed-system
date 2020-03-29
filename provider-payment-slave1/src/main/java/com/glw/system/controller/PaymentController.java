@@ -4,7 +4,6 @@ import com.glw.system.common.enums.ErrorCode;
 import com.glw.system.entity.Payment;
 import com.glw.system.entity.vo.ApiResponse;
 import com.glw.system.service.PaymentService;
-import com.netflix.discovery.DiscoveryClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +21,6 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
-
-    @Autowired
-    private DiscoveryClient discoveryClient;
 
     @PostMapping("/create")
     public ApiResponse create(@RequestBody Payment payment) {
