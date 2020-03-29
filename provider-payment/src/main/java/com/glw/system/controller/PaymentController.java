@@ -23,7 +23,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/create")
-    public ApiResponse create(Payment payment) {
+    public ApiResponse create(@RequestBody Payment payment) {
         int id = paymentService.create(payment);
         if (id > 0) {
             log.info(" >>>>> Insert payment successfully, payment id = {}", id);
