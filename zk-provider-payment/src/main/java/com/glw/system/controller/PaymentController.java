@@ -18,7 +18,7 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-    @PostMapping("/zk")
+    @GetMapping("/zk")
     public String payment() {
         log.info(" >>>>> zookeeper server port = {}", serverPort);
         return "zookeeper";

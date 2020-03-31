@@ -15,9 +15,9 @@
     <module>api-common</module>
     <module>eureka-server</module>
     <module>eureka-server-slave1</module>
-    <module>consumer-order-slave1</module>
     <module>provider-payment-slave1</module>
       <module>zk-provider-payment</module>
+    <module>zk-consumer-order</module>
   </modules>
 
   <properties>
