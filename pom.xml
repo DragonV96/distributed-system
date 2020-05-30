@@ -19,6 +19,7 @@
       <module>zk-provider-payment</module>
     <module>zk-consumer-order</module>
     <module>consul-provider-payment</module>
+    <module>consul-consumer-order</module>
   </modules>
 
   <properties>

@@ -23,9 +23,6 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
     @PostMapping("/create")
     public ApiResponse create(@RequestBody Payment payment) {
         int id = paymentService.create(payment);
