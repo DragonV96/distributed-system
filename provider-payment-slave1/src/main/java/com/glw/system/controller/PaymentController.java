@@ -6,6 +6,7 @@ import com.glw.system.entity.vo.ApiResponse;
 import com.glw.system.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,6 +22,9 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @PostMapping("/create")
     public ApiResponse create(@RequestBody Payment payment) {
@@ -42,5 +46,10 @@ public class PaymentController {
         }
         log.error(" >>>>> There is no record about this payment! Payment id = {}", id);
         return ApiResponse.error(ErrorCode.QUERY_NO_RECORD);
+    }
+
+    @GetMapping("/get/loadbalancer")
+    public ApiResponse<String> getPaymentLoadBalancer() {
+        return ApiResponse.success(serverPort);
     }
 }

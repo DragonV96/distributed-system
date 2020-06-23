@@ -3,11 +3,18 @@ package com.glw.system.controller;
 import com.glw.system.common.enums.ErrorCode;
 import com.glw.system.entity.Payment;
 import com.glw.system.entity.vo.ApiResponse;
+import com.glw.system.lb.LoadBalancer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
+import java.net.URI;
+import java.util.List;
 
 /**
  * @author : glw
@@ -24,6 +31,12 @@ public class OrderController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Resource
+    private LoadBalancer loadBalancer;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping("/payment/create")
     public ApiResponse<Payment> create(Payment payment) {
@@ -46,5 +59,17 @@ public class OrderController {
         } else {
             return ApiResponse.error(ErrorCode.FAILED_OPERATE);
         }
+    }
+
+    @GetMapping("/payment/get/loadbalancer")
+    public ApiResponse<String> getPaymentLoadBalancer() {
+        List<ServiceInstance> instances = discoveryClient.getInstances("PAYMENT-SERVICE");
+        if (instances == null || instances.size() <= 0) {
+            return ApiResponse.error(ErrorCode.NONE_DATA);
+        }
+
+        ServiceInstance serviceInstance = loadBalancer.instances(instances);
+        URI uri = serviceInstance.getUri();
+        return restTemplate.getForObject(uri + "/payment/get/loadbalancer", ApiResponse.class);
     }
 }
