@@ -20,6 +20,7 @@
     <module>zk-consumer-order</module>
     <module>consul-provider-payment</module>
     <module>consul-consumer-order</module>
+      <module>feign-conumer-order</module>
   </modules>
 
   <properties>
