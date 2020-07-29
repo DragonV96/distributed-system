@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author : glw
  * @date : 2020/3/28
@@ -51,6 +53,20 @@ public class PaymentController {
 
     @GetMapping("/get/loadbalancer")
     public ApiResponse<String> getPaymentLoadBalancer() {
+        return ApiResponse.success(serverPort);
+    }
+
+    /**
+     * 模拟服务调用超时接口
+     * @return
+     */
+    @GetMapping("/feign/timeout")
+    public ApiResponse<String> timeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return ApiResponse.success(serverPort);
     }
 }

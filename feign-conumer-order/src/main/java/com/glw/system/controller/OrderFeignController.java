@@ -31,4 +31,14 @@ public class OrderFeignController {
     public ApiResponse<Payment> getPaymentById(@PathVariable("id") Long id) {
         return paymentFeignService.getPaymentById(id);
     }
+
+    /**
+     * 模拟服务调用超时接口
+     * @return
+     */
+    @GetMapping("/payment/feign/timeout")
+    ApiResponse<String> timeout() {
+        // openfeign 一般默认等待 1 秒钟
+        return paymentFeignService.timeout();
+    }
 }

@@ -10,3 +10,11 @@ eureka:
     service-url:
       defaultZone: http://server1:7001/eureka,http://server2:7002/eureka
     register-with-eureka: false
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    com.glw.system.service.PaymentFeignService: debug
