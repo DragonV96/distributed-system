@@ -15,7 +15,8 @@ public enum ErrorCode {
     NONE_DATA(555, "没有此数据"),
     FAILED_OPERATE(444, "操作失败"),
     INSERT_ERROR(1001, "插入数据库失败"),
-    QUERY_NO_RECORD(2001, "数据库没有此条记录");
+    QUERY_NO_RECORD(2001, "数据库没有此条记录"),
+    SERVICE_FALLBACK(8888, "服务器繁忙，请稍后再试");
 
     /** 错误码 */
     private int code;

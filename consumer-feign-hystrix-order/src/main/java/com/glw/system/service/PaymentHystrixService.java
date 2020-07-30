@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @Description : 支付接口服务层
  */
 @Component
-@FeignClient(value = "HYSTRIX-PAYMENT-SERVICE")
+@FeignClient(value = "HYSTRIX-PAYMENT-SERVICE", fallback = PaymentFallbackService.class)
 public interface PaymentHystrixService {
 
     @PostMapping("/create")

@@ -18,3 +18,7 @@ ribbon:
 logging:
   level:
     com.glw.system.service.PaymentFeignService: debug
+
+feign:
+  hystrix:
+    enabled: true
