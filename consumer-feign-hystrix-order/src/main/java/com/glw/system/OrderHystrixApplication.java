@@ -3,20 +3,20 @@ package com.glw.system;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author : glw
- * @date : 2020/3/27
- * @time : 23:24
+ * @date : 2020/7/29
+ * @time : 22:21
  * @Description : 启动类
  */
-@EnableEurekaClient
 @SpringBootApplication
+@EnableFeignClients
 @EnableCircuitBreaker
-public class PaymentHystrixApplication {
+public class OrderHystrixApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PaymentHystrixApplication.class, args);
+        SpringApplication.run(OrderHystrixApplication.class, args);
     }
 }

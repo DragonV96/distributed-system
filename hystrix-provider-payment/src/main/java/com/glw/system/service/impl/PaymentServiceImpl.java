@@ -3,6 +3,8 @@ package com.glw.system.service.impl;
 import com.glw.system.dao.PaymentDao;
 import com.glw.system.entity.Payment;
 import com.glw.system.service.PaymentService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,8 +37,12 @@ public class PaymentServiceImpl implements PaymentService {
         return "线程池：" + Thread.currentThread().getName() + " getPaymentInfo，id = " + id + " xxxxxxx";
     }
 
+    @HystrixCommand(fallbackMethod = "getPaymentInfoTimeOutHandler", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    })
     @Override
     public String getPaymentInfoTimeOut(Integer id) {
+//        int time = 5/0;
         int time = 3;
         try {
             TimeUnit.SECONDS.sleep(time);
@@ -44,5 +50,10 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
         return "线程池：" + Thread.currentThread().getName() + " getPaymentInfoTimeOut，id = " + id + " xxxxxxx 耗时" + time + "s";
+    }
+
+    @Override
+    public String getPaymentInfoTimeOutHandler(Integer id) {
+        return "线程池：" + Thread.currentThread().getName() + " getPaymentInfoTimeOutHandler，id = " + id + " 服务降级";
     }
 }

@@ -22,6 +22,7 @@
     <module>consul-consumer-order</module>
       <module>feign-conumer-order</module>
       <module>hystrix-provider-payment</module>
+    <module>consumer-feign-hystrix-order</module>
   </modules>
 
   <properties>

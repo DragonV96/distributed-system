@@ -18,4 +18,7 @@ public interface PaymentService {
     String getPaymentInfo(Integer id);
 
     String getPaymentInfoTimeOut(Integer id);
+
+    String getPaymentInfoTimeOutHandler(Integer id);
+
 }
