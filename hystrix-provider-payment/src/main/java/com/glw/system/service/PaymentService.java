@@ -2,6 +2,7 @@ package com.glw.system.service;
 
 import com.glw.system.entity.Payment;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @author : glw
@@ -21,4 +22,7 @@ public interface PaymentService {
 
     String getPaymentInfoTimeOutHandler(Integer id);
 
+    String getPaymentCircuitBreaker(@PathVariable("id") Integer id);
+
+    String getPaymentCircuitBreakerFallback(@PathVariable("id") Integer id);
 }

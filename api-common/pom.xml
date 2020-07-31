@@ -25,7 +25,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 时间日期格式工具包 -->
+        <!-- 强大的工具包依赖 -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>

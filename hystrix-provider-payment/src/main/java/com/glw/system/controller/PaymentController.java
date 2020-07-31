@@ -90,4 +90,15 @@ public class PaymentController {
         log.info(">>>>> result = {}", result);
         return ApiResponse.success(result);
     }
+
+    /**
+     * hystrix 模拟服务熔断接口
+     * @return
+     */
+    @GetMapping("/hystrix/circuit/{id}")
+    public ApiResponse<String> getPaymentCircuitBreaker(@PathVariable("id") Integer id) {
+        String result = paymentService.getPaymentCircuitBreaker(id);
+        log.info(">>>>> result = {}", result);
+        return ApiResponse.success(result);
+    }
 }
