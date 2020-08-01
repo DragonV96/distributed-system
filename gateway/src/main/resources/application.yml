@@ -1,0 +1,29 @@
+host:
+  localUri: http://localhost:8001
+
+server:
+  port: 9527
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: payment_route
+          uri: ${host.localUri}
+          predicates:
+            - Path=/payment/get/**
+        - id: payment_route2
+          uri: ${host.localUri}
+          predicates:
+            - Path=/payment/feign/timeout/**
+
+eureka:
+  instance:
+    hostname: gateway-service
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://server1:7001/eureka,http://server2:7002/eureka
