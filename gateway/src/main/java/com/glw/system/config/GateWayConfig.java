@@ -21,4 +21,9 @@ public class GateWayConfig {
                 r -> r.path("/hystrix/timeout/**").uri("http://127.0.0.1:8001/hystrix/timeout/20")).build();
         return routes.build();
     }
+
+//    public static void main(String[] args) {
+//        ZonedDateTime now = ZonedDateTime.now();
+//        System.out.println(now);
+//    }
 }

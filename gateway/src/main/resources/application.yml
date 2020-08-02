@@ -9,13 +9,21 @@ spring:
     name: gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: payment_route
-          uri: ${host.localUri}
+#          uri: ${host.localUri}
+          uri: lb://hystrix-payment-service
           predicates:
             - Path=/payment/get/**
+            - After=2020-08-02T13:34:03.255+08:00[Asia/Shanghai]
+            - Cookie=username,666
+            - Header=X-Request-Id, \d+
         - id: payment_route2
-          uri: ${host.localUri}
+#          uri: ${host.localUri}
+          uri: lb://hystrix-payment-service
           predicates:
             - Path=/payment/feign/timeout/**
 
