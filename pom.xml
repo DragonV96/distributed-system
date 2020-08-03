@@ -25,6 +25,7 @@
     <module>consumer-feign-hystrix-order</module>
     <module>consumer-hystrix-dashboard</module>
     <module>gateway</module>
+    <module>config-center</module>
   </modules>
 
   <properties>

@@ -1,0 +1,19 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:DragonV96/distributed-system-config.git
+          search-paths:
+            - distributed-system-config
+      label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server1:7001/eureka,http://server2:7002/eureka
