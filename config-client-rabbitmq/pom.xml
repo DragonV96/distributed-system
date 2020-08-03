@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>config-client</artifactId>
+    <artifactId>config-client-rabbitmq</artifactId>
 
     <dependencies>
         <dependency>
