@@ -1,9 +1,9 @@
 server:
-  port: 8801
+  port: 8802
 
 spring:
   application:
-    name: stream-stream-provider
+    name: stream-stream-consumer
   cloud:
     stream:
       binders:
@@ -17,10 +17,11 @@ spring:
                 username: admin
                 password: admin
       bindings:
-        output:
+        input:
           destination: studyExchange
           content-type: application/json
           binder: defaultRabbit
+          group: consumerA
 
 eureka:
   client:
@@ -29,5 +30,5 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 2  # 心跳间隔，默认30秒
     lease-expiration-duration-in-seconds: 5   # 心跳超时间隔，默认90秒
-    instance-id: send-8801.com
+    instance-id: receive-8802.com
     prefer-ip-address: true

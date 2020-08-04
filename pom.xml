@@ -29,6 +29,8 @@
       <module>config-client</module>
     <module>config-client-rabbitmq</module>
     <module>steam-rabbitmq-provider</module>
+    <module>stream-rabbitmq-consumer</module>
+      <module>stream-rabbitmq-consumer-slave1</module>
   </modules>
 
   <properties>
