@@ -1,0 +1,33 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: config-stream-provider
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.1.158
+                port: 5672
+                username: admin
+                password: admin
+      bindings:
+        output:
+          destination: studyExchange
+          content-type: application/json
+          binder: defaultRabbit
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server1:7001/eureka,http://server2:7002/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 2  # 心跳间隔，默认30秒
+    lease-expiration-duration-in-seconds: 5   # 心跳超时间隔，默认90秒
+    instance-id: send-8801.com
+    prefer-ip-address: true

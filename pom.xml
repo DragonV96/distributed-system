@@ -28,6 +28,7 @@
     <module>config-center</module>
       <module>config-client</module>
     <module>config-client-rabbitmq</module>
+    <module>steam-rabbitmq-provider</module>
   </modules>
 
   <properties>
