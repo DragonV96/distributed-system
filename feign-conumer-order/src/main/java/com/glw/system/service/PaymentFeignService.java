@@ -31,4 +31,7 @@ public interface PaymentFeignService {
      */
     @GetMapping("/payment/feign/timeout")
     ApiResponse<String> timeout();
+
+    @GetMapping("/payment/zipkin")
+    ApiResponse<String> zipkin();
 }

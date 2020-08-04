@@ -69,4 +69,9 @@ public class PaymentController {
         }
         return ApiResponse.success(serverPort);
     }
+
+    @GetMapping("/zipkin")
+    public ApiResponse<String> zipkin() {
+        return ApiResponse.success("payment zipkin, server port = " + serverPort);
+    }
 }

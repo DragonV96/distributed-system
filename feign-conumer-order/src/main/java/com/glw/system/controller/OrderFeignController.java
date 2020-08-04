@@ -41,4 +41,10 @@ public class OrderFeignController {
         // openfeign 一般默认等待 1 秒钟
         return paymentFeignService.timeout();
     }
+
+    @GetMapping("/payment/zipkin")
+    public ApiResponse<String> zipkin() {
+        return paymentFeignService.zipkin();
+    }
+
 }
